@@ -4,25 +4,18 @@ subtitle: Text Analytics, day 2
 instructor: Kristoffer L. Nielbo  
 contact: kln@cas.au.dk
 ```
-## Installation
+## Text Analytics
 
-TODO: Describe the installation process
+TODO: Describe TA
 
-## Usage
+## Program
 
-TODO: Write usage instructions
+| Time        | Content           | Instructor  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | `right-aligned` | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## History
-
-TODO: Write history
 
 ## Credits
 
