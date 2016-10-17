@@ -14,8 +14,9 @@ TODO: Describe TA
 
 | Time        | Content           | Instructor  |
 | ------------- |:-------------:| -----:|
-| 1h      | `Text Analytics` | KLN |
-| .5h      | `Tools`      |   KLN |
+| 1.15h      | `Text Analytics` | KLN |
+| .5h      | `Generic Tools`      |   KLN |
+|.25| break|
 | zebra stripes | are neat      |    $1 |
 
 
