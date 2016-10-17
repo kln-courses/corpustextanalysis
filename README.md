@@ -1,7 +1,9 @@
-# Corpus and Text Analysis
-
-TODO: Write a project description
-
+```yaml
+title: Corpus and Text Analysis
+subtitle: Text Analytics, day 2
+instructor: Kristoffer L. Nielbo  
+contact: kln@cas.au.dk
+```
 ## Installation
 
 TODO: Describe the installation process
