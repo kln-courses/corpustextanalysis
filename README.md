@@ -27,7 +27,7 @@ TODO: Describe TA
 
 ## Credits
 
-TODO: Write credits
+<center>TODO: Write credits</center>
 
 ## License
 
