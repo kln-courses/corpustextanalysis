@@ -1,6 +1,8 @@
 ```yaml
 title: Corpus and Text Analysis
 subtitle: Text Analytics, day 2
+place: Karen Blixens Vej 4
+time: November 11 2016, 9 AM to 4 PM.
 instructor: Kristoffer L. Nielbo  
 contact: kln@cas.au.dk
 ```
@@ -12,8 +14,8 @@ TODO: Describe TA
 
 | Time        | Content           | Instructor  |
 | ------------- |:-------------:| -----:|
-| col 3 is      | `right-aligned` | $1600 |
-| col 2 is      | centered      |   $12 |
+| 1h      | `Text Analytics` | KLN |
+| .5h      | `Tools`      |   KLN |
 | zebra stripes | are neat      |    $1 |
 
 
