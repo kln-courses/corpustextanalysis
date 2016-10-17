@@ -14,11 +14,16 @@ TODO: Describe TA
 
 | Time        | Content           | Instructor  |
 | ------------- |:-------------:| -----:|
-| 1.15h      | `Text Analytics` | KLN |
-| .5h      | `Generic Tools`      |   KLN |
-|.25| break|
-| zebra stripes | are neat      |    $1 |
-
+| 1h (9) |`Text Analytics` |KLN|
+|.5h | `Generic Tools` | KLN |
+|.5h | break | |
+| 1h (11)) | `Data Preparation` | KLN |
+| .5h | `Concerns about Preprocessing` | RM |
+| 1h | lunch break | |
+| 1h (13:30) | `Sentiment Analysis` | KLN |
+| 1h | `Hard Clustering` | KLN |
+| 1h | `Latent Variables` | KLN |
+| 1h | `Document Classification` | KLN |
 
 ## Credits
 
