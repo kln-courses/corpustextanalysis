@@ -7,8 +7,7 @@ instructor: Kristoffer L. Nielbo
 contact: kln@cas.au.dk
 ```
 ## Text Analytics
-
-TODO: Describe TA
+Text analytics (~ text mining) is a heterogeneous research field that focuses on extraction of meaningful patterns from unstructured and text-heavy data. The meaningful patterns are typically extracted by applying statistical learning (i.e., machine learning) to target data sets from large non-relational databases. In this one-day introductory course, we will go through a generic text analytics pipeline with particular focus on available tools for data preparation and data mining.
 
 ## Program
 
@@ -28,6 +27,6 @@ TODO: Describe TA
 
 TODO: Write credits
 
-## License
+## Other
 
-TODO: Write license
+While neither mandatory or strictly necessary, participants will benefit from installing [R](https://www.r-project.org/ "The R Project for Statistical Computing") and Python 2.
