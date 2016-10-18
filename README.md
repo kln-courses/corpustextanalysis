@@ -3,7 +3,7 @@ title: Corpus and Text Analysis
 subtitle: Text Analytics, day 2
 place: Karen Blixens Vej 4
 time: November 11, 2016, 9 AM to 4 PM.
-instructor: Kristoffer L. Nielbo  
+instructor: Kristoffer L. Nielbo  (KLN)
 contact: kln@cas.au.dk
 ```
 ## Text Analytics
@@ -13,12 +13,12 @@ Text analytics (~ text mining) is a heterogeneous research field that focuses on
 
 | Time        | Content           | Instructor  |
 | ------------- |:-------------:| -----:|
-| 9:00-10:00 |`Text Analytics` |KLN|
+| 09:00-10:00 |`Text Analytics` |KLN|
 | 10:00-10:30 | `Generic Tools` | KLN |
 | 10:30-11:00 | break
 | 11:00-12:00 | `Data Preparation` | KLN |
-| 12:00-12:30 .5h | `Concerns about Preprocessing` | RM |
-| 12:30-13:30 1h | lunch break | |
+| 12:00-12:30 | `Concerns about Preprocessing` | Munksgaard |
+| 12:30-13:30 | lunch break | |
 | 13:30-14:00 | `Sentiments` | KLN |
 | 14:00-15:00 | `Clustering` | KLN |
 | 15:00-16:00 | `Classification` | KLN |
