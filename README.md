@@ -20,14 +20,13 @@ TODO: Describe TA
 | 1h (11)) | `Data Preparation` | KLN |
 | .5h | `Concerns about Preprocessing` | RM |
 | 1h | lunch break | |
-| 1h (13:30) | `Sentiment Analysis` | KLN |
-| 1h | `Hard Clustering` | KLN |
-| 1h | `Latent Variables` | KLN |
-| 1h | `Document Classification` | KLN |
+| 1h (13:30) | `Sentiments` | KLN |
+| 1h | `Clustering` | KLN |
+| 1h | `Classification` | KLN |
 
 ## Credits
 
-<center>TODO: Write credits</center>
+TODO: Write credits
 
 ## License
 
