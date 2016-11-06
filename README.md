@@ -15,16 +15,15 @@ Text analytics (~ text mining) is a heterogeneous research field that focuses on
 | ------------- |:-------------:| -----:|
 | 09:00-10:00 |`Text Analytics` |KLN|
 | 10:00-10:30 | `Generic Tools` | KLN |
-| 10:30-11:00 | break
+| 10:30-11:00 | break| |
 | 11:00-12:00 | `Data Preparation` | KLN |
 | 12:00-12:30 | `Concerns about Preprocessing` | Munksgaard |
 | 12:30-13:30 | lunch break | |
 | 13:30-14:00 | `Sentiments` | KLN |
-| 14:00-14:15 | break
+| 14:00-14:15 | break| |
 | 14:00-15:00 | `Clustering` | KLN |
 | 15:00-15:45 | `Classification` | KLN |
-| 15:45-16:00 | course evaluation
-| ------------- |:-------------:| -----:|
+| 15:45-16:00 | course evaluation| |
 
 ## Reading material
 
