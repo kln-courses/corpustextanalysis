@@ -25,6 +25,7 @@ Text analytics (~ text mining) is a heterogeneous research field that focuses on
 | 15:00-15:45 | `Classification` | KLN |
 | 15:45-16:00 | course evaluation
 
+
 ## Reading material
 
 Blei, D. M. (2012). [Probabilistic topic models](https://www.cs.princeton.edu/~blei/papers/Blei2012.pdf). Communications of the ACM, 55(4), 77–84.
