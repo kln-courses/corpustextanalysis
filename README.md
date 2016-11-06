@@ -24,6 +24,7 @@ Text analytics (~ text mining) is a heterogeneous research field that focuses on
 | 14:00-15:00 | `Clustering` | KLN |
 | 15:00-15:45 | `Classification` | KLN |
 | 15:45-16:00 | course evaluation
+| ------------- |:-------------:| -----:|
 
 ## Reading material
 
