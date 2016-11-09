@@ -18,7 +18,6 @@ def sent_scr(string):
     #return sum([dictionary.get(token.lower(), 0.0) for token in tokens]) / len(tokens)# for comparison
 
 ### example
-#sent_scr('nigger')
 #print sent_scr('some hate')
 #sent_scr('some love and some hate')
 ## bag of words problem
@@ -28,10 +27,7 @@ sent = 'Did Crooked Hillary help disgusting (check out sex tape and past) Alicia
 print sent_scr(sent.lower())
 
 sent_tok = sent.split()
-
-
 scr = []
 for i in range(0,len(sent_tok)):
     scr.append(sent_scr(sent_tok[i]))
-
 zip(sent_tok,scr)
