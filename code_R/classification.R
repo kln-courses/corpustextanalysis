@@ -1,10 +1,10 @@
 # classification
 rm(list = ls())
-wd <- 'C:/Users/KLN/some_r'
+wd <- '/home/kln/Documents/education/tm_R/some_r'
 setwd(wd)
 source('util_fun.R')
 
-input.dir <- 'C:/Users/KLN/some_r/data/nt_hist'
+input.dir <- '/home/kln/Documents/education/tm_R/some_r/data/nt_hist'
 files.v <- dir(path = input.dir, pattern='.*txt')
 
 # tokenize text in directory
@@ -21,7 +21,7 @@ maketext <- function(files,directory){
   }
   names(text.word.l) <- gsub("\\..*","",files)
   return(text.word.l)
-}  
+}
 
 text.word.l <- maketext(files.v,input.dir)
 names(text.word.l)
@@ -60,30 +60,29 @@ text.mat <- as.matrix(text.dtm)
 rownames(text.mat) <- names(text.l)
 text.mat[1:10,1:10]
 
-
 # full model predict class of Thomas and build data frame
-idx <- which(class.v != 'Thomas')
+idx <- which(class.v != "Thomas")
 
 # classical validation procedure
-train <- ifelse(runif(length(class.v)) < 0.80,1,0)
+# train <- ifelse(runif(length(class.v)) < 0.80,1,0)
+train <- ifelse(runif(length(idx)) < 0.80,1,0)
 idx <- which(train == 1)
 
 # build feature set for training
 feat1.df <- data.frame(book = class.v[idx],text.mat[idx,])
 head(feat1.df[1:10,1:10])
+
 # naive bayes classifier (categorical data, but assumes independence)
 library(e1071)
 model.nb <- naiveBayes(book ~ ., data = feat1.df)
 pred.v <- predict(model.nb, feat1.df)
 
 # conditional posterior probabilities
-predraw.v <- predict(model.nb, feat1.df,type = 'raw')
+predraw.v <- predict(model.nb, feat1.df, type = 'raw')
 head(predraw.v)
 
-
+# performance evaluation
 confusion.mat <- as.matrix(table(pred = pred.v,true = feat1.df$book))
-
-# performance metric
 accuracy <- sum(diag(confusion.mat))/sum(confusion.mat)
 print(accuracy)
 
@@ -91,27 +90,25 @@ print(accuracy)
 library(ggplot2)
 dev.new()
 plot <- ggplot(as.data.frame(confusion.mat))
-plot + geom_tile(aes(x=pred, y=true, fill=Freq)) + 
-  scale_x_discrete(name="Predicted Class") + 
-  scale_y_discrete(name="True Class") + 
-  scale_fill_gradient(breaks=seq(from=-.5, to=4, by=.2)) + 
+plot + geom_tile(aes(x=pred, y=true, fill=Freq)) +
+  scale_x_discrete(name="Predicted Class") +
+  scale_y_discrete(name="True Class") +
+  scale_fill_gradient(breaks=seq(from=-.5, to=4, by=.2)) +
   labs(fill="Frequency")
 
-
 # chance level
-table(feat1.df$book)
-#chance <- 100/sum(table(feat1.df$book))
+table(feat1.df$book)/sum(table(feat1.df$book))
 
 # testing procedure
 idx <- which(train != 1)
-feat2.df <- data.frame(book = class.v[idx],text.mat[idx,]) 
+feat2.df <- data.frame(book = class.v[idx],text.mat[idx,])
 test.v <- predict(model.nb, feat2.df)
 confusion.mat <- as.matrix(table(test.v,feat2.df$book))
 accuracy <- sum(diag(confusion.mat))/sum(confusion.mat)
 
 # predict class of Thomas (early or late)
 idx <- which(class.v == 'Thomas')
-feat2.df <- data.frame(book = class.v[idx],text.mat[idx,]) 
+feat2.df <- data.frame(book = class.v[idx],text.mat[idx,])
 predthom.v <- predict(model.nb, feat2.df)
 dev.new()
 plot(table(predthom.v))
@@ -128,9 +125,8 @@ confusion.mat <- as.matrix(table(predrand.v,featrand.df$book))
 accuracy <- sum(diag(confusion.mat))/sum(confusion.mat)
 print(accuracy)
 
+### scaling with RTextTools and tm ###
 
-##############################
-#scaling with RTextTools and tm
 library(RWeka)
 text.dtm <- DocumentTermMatrix(text.cor, control=list(tokenize = NGramTokenizer))
 text.dtm <- docsparse(5,text.dtm)
