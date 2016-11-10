@@ -1,6 +1,6 @@
 ### unsupervised learning: clustering
 rm(list = ls())
-wd <- 'C:/Users/KLN/some_r'
+wd <- '/home/kln/Documents/education/tm_R/some_r';
 setwd(wd)
 source('util_fun.R')
 library(tm)
@@ -59,6 +59,7 @@ text(prcomp(sentnorm.mat)$x[,1],prcomp(sentnorm.mat)$x[,2],rownames(sentnorm.mat
 # plot clusters using the first 2 principal components
 x <- prcomp(sentnorm.mat)$x[,1]; y <- prcomp(sentnorm.mat)$x[,2]; names <- capname(rownames(sentnorm.mat))
 cols = as.double(sent.cl$cluster)
+dev.new()
 plot(x, y, type='p', pch=20, col=cols, cex = 2,xlab='Comp.1', ylab='Comp.2', xlim = c(-.4, 1), ylim = c(-.7,.5))
 text(x, y, names, col=cols, cex=.8, pos=4)
 
@@ -66,10 +67,8 @@ text(x, y, names, col=cols, cex=.8, pos=4)
 library(proxy)
 sent.dist <- dist(sentnorm.mat, method="cosine")# use dot product and euclid dist as length normalizer
 sent.hc <- hclust(sent.dist)
-
-
-
 # plot with dendrogram
+dev.new()
 plot(sent.hc)
 cl <- cutree(sent.hc, 3) # prune tree in three paths 
 print(cl)
@@ -80,6 +79,7 @@ library('clValid')
 intern <- clValid(sent.mat, 2:6, clMethods=c("hierarchical","kmeans"),validation="internal")
 summary(intern)
 optimalScores(intern)# only view optimal values
+dev.new()
 op <- par(no.readonly=TRUE)
 par(mfrow=c(2,2),mar=c(4,4,3,1))
 plot(intern, legend=FALSE)

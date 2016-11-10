@@ -29,14 +29,17 @@ def vanilla_chunk(unigrams,n):
             chunks.append(chunk)
     return chunks
 
-## prune bottum (mn number of documents) and top (mx number of documents)
+## prune top percentile and bottom percentile
 from collections import defaultdict
-def vanilla_prune(unigrams,mx,mn):
+import numpy as np
+def vanilla_prune(unigrams,mxper,mnper):
     frequency = defaultdict(int)
     for doc in unigrams:
         for unigram in doc:
             frequency[unigram] += 1
-#    freqs = [val for val in frequency.values()]
+    freqs = [val for val in frequency.values()]
+    mn = np.percentile(freqs, mnper)
+    mx = np.percentile(freqs, mxper)
     unigrams_prune = [[unigram for unigram in doc if frequency[unigram] > mn and frequency[unigram] <= mx] for doc in unigrams]
     return unigrams_prune
 

@@ -1,80 +1,57 @@
 __author__ = 'kln-courses'
-import io, glob, os, re, unicodedata
-wd = "/home/kln"
-datapath = "/home/kln/Desktop/plaintext"
-###import unicode plain text
-os.chdir(datapath)
-contents = []
-regex = re.compile('[,\.!?0-9]')# filter with regex
+from gensim import corpora, models, similarities
+from gensim.models import ldamodel
+#from itertools import izip
+from collections import defaultdict
+import io, codecs, os, glob, math, re
+import numpy as np
+import unicodedata
+stopwords = [i.strip() for i in codecs.open('python/stopextend.txt','r','utf8').readlines() if i[0] != "#" and i != ""]
+def gen_topics(corpus, dictionary, k):
+    # Build LDA model using the above corpus    
+    np.random.seed(23)
+    lda = ldamodel.LdaModel(corpus, id2word=dictionary, num_topics=k)
+    corpus_lda = lda[corpus]
+    
+    # group topics with similar words    
+    tops = set(lda.show_topics(k))
+    top_cl = []
+    for l in tops:
+        top = []
+        for t in str(l).split(" + "):# tuples have no split attribute
+            top.append((t.split("*")[0], t.split("*")[1]))
+        top_cl.append(top)        
+        
+    # generate word topics
+    top_w = []
+    for i in top_cl:
+        top_w.append(":".join([j[1] for j in i]))
+
+    return lda, corpus_lda, top_cl, top_w
+
+####################################################################### 
+# Read textfile, build dictionary and bag-of-words corpus
+os.chdir("/home/kln/corpora/kjv_books")
+docs = []
+regex = re.compile('[{}:,\.!?0-9]')
 for file in glob.glob("*.txt"):
     with io.open(file,'r',encoding='utf8') as f:
-       text = f.read()
-       text = unicodedata.normalize('NFKD', text).encode('ascii','ignore')# normalize unicode
-       contents.append(regex.sub('', text))
-os.chdir(wd)
-# import stopword list
-filename = 'stopwords_eng.txt'
-with io.open(filename,'r',encoding='utf8') as f:
-    text = f.read()
-stoplist = set(text.split())
-# tokenize and case fold
-contents_tok = [[w for w in doc.lower().split() if w not in stoplist] for doc in contents]
-# chunk documents in n chuncks
-n = 100
-from gensim.utils import chunkize
-contents_chunk = []
-for doc in contents_tok:
-    clen = len(doc)/n
-    for c in chunkize(doc,clen):
-         contents_chunk.append(c)
-# extract raw frequencies
-from gensim import corpora, models
-from collections import defaultdict
-import numpy as np
-# compute word freq
-frequency = defaultdict(int)
-for chunk in contents_chunk:
-    for token in chunk:
-        frequency[token] += 1
-freq = [val for val in frequency.values()]
-# prune bottum (mn) and top (mx)
-mn = 1
-mx = np.percentile(freq, 98)
-contents_chunk = [[token for token in chunk if frequency[token] > mn and frequency[token] <= mx] for chunk in contents_chunk]
-## lemmatize using with NLTK using POS tags from WordNet
-from nltk.corpus import wordnet
-# change from treebank to wordnet POS tags
-def get_wordnet_pos(treebank_tag):
-    if treebank_tag.startswith('J'):
-        return wordnet.ADJ
-    elif treebank_tag.startswith('V'):
-        return wordnet.VERB
-    elif treebank_tag.startswith('N'):
-        return wordnet.NOUN
-    elif treebank_tag.startswith('R'):
-        return wordnet.ADV
-    else:
-        return wordnet.NOUN# assume noun as baseline
-from nltk.stem import WordNetLemmatizer
-wordnet_lemmatizer = WordNetLemmatizer()
-from nltk.tag import pos_tag
-for i, _ in enumerate(contents_chunk):# loop over chunks
-    tmp = pos_tag(contents_chunk[i])
-    for ii, _ in enumerate(tmp):# loop over tokens
-        contents_chunk[i][ii] = wordnet_lemmatizer.lemmatize(tmp[ii][0],get_wordnet_pos(tmp[ii][1]))
-## simple LDA model
-# bag-of-words
-dictionary = corpora.Dictionary(contents_chunk)
-corpus = [dictionary.doc2bow(chunk) for chunk in contents_chunk]
-# for reproducibility
-import numpy as np
-fixed_seed = 23
-np.random.seed(fixed_seed)
-# train model on k topics
-k = 20
-mdl = models.LdaModel(corpus, id2word=dictionary, num_topics=k, chunksize=3125, passes=25, update_every=0, alpha=None, eta=None, decay=0.5, distributed=False)
-# print topics
-for i in range(0,k):
-    print 'Topic', i+1
-    print(mdl.show_topic(i))
-    print('-----')
+       doc = f.read()
+       #text = text.rstrip('\n')
+       doc = doc.replace('\n',' ')
+       doc = unicodedata.normalize('NFKD', doc).encode('ascii','ignore')# normalize unicode chars
+       doc = regex.sub('', doc)
+       docs.append(doc.rstrip())
+os.chdir("/home/kln")
+texts = [[w for w in doc.lower().split() if w not in stopwords]
+             for doc in docs]
+dictionary = corpora.Dictionary(texts)
+corpus = [dictionary.doc2bow(text) for text in texts]
+
+lda, corpus_lda, top_cl, top_w = gen_topics(corpus, dictionary, 10)
+
+for i in top_w:
+    print i
+
+for i in top_cl:
+    print i    
