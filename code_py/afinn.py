@@ -1,4 +1,3 @@
-__author__ = 'kln-courses'
 from afinn import Afinn
 afinn = Afinn()
 afinn.score('This is utterly excellent!')
